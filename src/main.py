@@ -43,10 +43,11 @@ def execute_script(url, id, script_name,  iteration_count, container_timeout):
         ## Execute javascript file
         logging.info(get_time() +'container_'+id+': Executing javascript')
         container = client.containers.get('container_'+str(id))
+        
         _,logs = container.exec_run(cmd=['node',script_name,url,id,str(iteration_count),str(container_timeout)], user=docker_user, detach=False, stream=True)
         time.sleep(container_timeout)        
+
         for log in logs:
-            print(type(log))
             logging.info('Container_' + id + ' LOG :: '+ str(log, 'utf-8'))
     
         logging.info(get_time() +'container_'+id+': Execution complete!!')	
@@ -148,7 +149,7 @@ def test():
         export_container(id, str(count-1))
 
         time.sleep(60)
-        
+
         resume_container(url, id, notification_collection_script, count, 180)
         count += 1
     
