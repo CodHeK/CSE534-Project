@@ -4,7 +4,7 @@ import time
 import datetime
 import logging
 import tarfile
-import traceback
+import tarfile
 
 from docker_config import *
 
@@ -42,19 +42,18 @@ def execute_script(url, id, script_name,  iteration_count, container_timeout):
     try:	
         ## Execute javascript file
         logging.info(get_time() +'container_'+id+': Executing javascript')
-        container = client.containers.get('container_'+str(id))               
-        #logs = container.attach(stream=True,stdout=True,stderr=True)
+        container = client.containers.get('container_'+str(id))
         _,logs = container.exec_run(cmd=['node',script_name,url,id,str(iteration_count),str(container_timeout)], user=docker_user, detach=False, stream=True)
         time.sleep(container_timeout)        
         for log in logs:
-            logging.info('Container_'+id+'LOG :: '+log)
+            print(type(log))
+            logging.info('Container_' + id + ' LOG :: '+ str(log, 'utf-8'))
     
         logging.info(get_time() +'container_'+id+': Execution complete!!')	
         
     except Exception as e:
         logging.info('Exception ')
         logging.info(e)
-        logging.info(traceback.print_exc())
 
 
 def stop_container(id):
@@ -87,11 +86,11 @@ def resume_container(url, id, script_name, iteration_count, container_timeout):
         ## wait for display to be activated ##
         time.sleep(10)
         ##   Open a blank page on the browser and wait for notifications 
-        execute_script('about:blank',id, script_name, iteration_count, container_timeout-100)
+        execute_script('about:blank', id, script_name, iteration_count, container_timeout-100)
 
 
 def export(container, tar_path, archive_path):
-    with open(tar_path, 'w') as f:
+    with open(tar_path, 'wb') as f:
         bits, stat = container.get_archive(archive_path)
         for chunk in bits:
             f.write(chunk)
@@ -116,33 +115,11 @@ def export_container(id, count):
     export(container, dir_path+'dowanloads.tar', '/home/pptruser/Downloads/')
     export(container, dir_path+'chrome_log.tar', '/home/pptruser/chromium/chrome_debug.log')
 
-    # with open(dir_path+'screenshots.tar', 'wb') as f:
-    #     bits, stat = container.get_archive('/home/pptruser/screenshots/')
-    #     for chunk in bits:
-    #         f.write(chunk)
-    # with open(dir_path+'logs.tar', 'wb') as f:
-    #     bits, stat = container.get_archive('/home/pptruser/logs/')
-    #     for chunk in bits:
-    #         f.write(chunk)
-    # with open(dir_path+'resources.tar', 'wb') as f:
-    #     bits, stat = container.get_archive('/home/pptruser/resources/')
-    #     for chunk in bits:
-    #         f.write(chunk)
-    # with open(dir_path+'dowanloads.tar', 'wb') as f:
-    #     bits, stat = container.get_archive('/home/pptruser/Downloads/')
-    #     for chunk in bits:
-    #         f.write(chunk)
-    # with open(dir_path+'chrome_log.tar', 'wb') as f:
-    #     bits, stat = container.get_archive('/home/pptruser/chromium/chrome_debug.log')
-    #     for chunk in bits:
-    #         f.write(chunk)
-
     return check_if_success(id,count)
 
 
 
 def check_if_success(id,count):
-    import tarfile
     logging.info(get_time() + 'container_'+id+' checking status!!')
     log_tar_dir = export_path+id+'/'+str(count)+'/logs.tar'
     t = tarfile.open(log_tar_dir,'r')
@@ -152,7 +129,7 @@ def check_if_success(id,count):
         f = t.extractfile(log_name)
         data = f.read()
         res = data.find('Service Worker Registered')
-    if res>-1:
+    if res >= 0:
         return True
     return False
 		
@@ -171,7 +148,7 @@ def test():
         resume_container(url, id,'capture_notifications.js', count, 180)
         count += 1
     
-    logging.info(check_if_success(id,'0'))
+    logging.info(check_if_success(id, '0'))
    
     
 if __name__== "__main__":

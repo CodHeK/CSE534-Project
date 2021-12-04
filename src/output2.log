@@ -1,0 +1,24 @@
+root -   initiate_container() - [2021-12-03 22:47:49] container_1638589669.4950552_chromium creating!!
+root -   initiate_container() - [2021-12-03 22:47:49] container_1638589669.4950552_chromium created successfully!!
+root -       execute_script() - [2021-12-03 22:47:59] container_1638589669.4950552_chromium: Executing javascript
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: crawling started :: 1638589669.4950552_chromium
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: visiting page
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: 1638589669.4950552_chromium :: page load timeout
+page visited
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: page loaded
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: timeout!!
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: screen captured
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: Content saved!
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: 2021-12-4 03:49:27
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: visit ended
+
+root -       execute_script() - Container_1638589669.4950552_chromiumLOG :: crawl process ended :: 1638589669.4950552_chromium
+

@@ -30,10 +30,7 @@ async function load_page(url,id,i_count,wait_time){
                                   '--no-sandbox',
                                   '--disable-setuid-sandbox',
                                   '--window-size=${ width },${ height }',
-                                  //'--start-maximized',
-                                  '--ignore-certificate-errors','--disable-gpu', 
-                                  //'--disable-extensions-except='+home_dir+'app/adGuard',
-                                  //'--load_extension = '+home_dir+'app/adGuard'                                                           
+                                  '--ignore-certificate-errors','--disable-gpu',                                                           
                                 ]
                          }).then(async browser => 
     {
@@ -42,7 +39,7 @@ async function load_page(url,id,i_count,wait_time){
       var stream = fs.createWriteStream(sw_log_dir+id+"_sw.log");
        
       try{
-          var the_interval = wait_time *1000 //in milliseconds
+          var the_interval = wait_time * 1000 //in milliseconds
 
           var page_dir = home_dir+'screenshots/'+id+'/pages/'          
           var resources_path = home_dir+'resources/'+id+'/'
@@ -94,6 +91,7 @@ async function load_page(url,id,i_count,wait_time){
           const page = await browser.newPage();
           await page.setViewport({ width, height })
           const context = browser.defaultBrowserContext();
+
           /** Log site details */
           stream.write('[Visiting Page started @ '+new Date(Date.now()).toLocaleString()+' ]');
           stream.write('\n')
@@ -126,8 +124,7 @@ async function load_page(url,id,i_count,wait_time){
                 fs.writeFile(resources_path+file_name, text, 'utf8', (err) => {              
                   stream.write('\t\tResponse file saved');
                 });}
-                catch(err){console.log(err)}
-                //await console.log(text)    
+                catch(err){console.log(err)}  
               })  
               
               sw.on('request',  async req => {
@@ -164,7 +161,6 @@ async function load_page(url,id,i_count,wait_time){
                   if (req._redirectChain.length>0){
                     stream.write('\t\t***Redirections***')
                     stream.write('\n')
-                    //console.log(req._redirectChain)
                     var redirect_chain = req._redirectChain
                     if (redirect_chain.length>0){
                       redirect_chain.forEach(redirect => {                     
@@ -196,7 +192,6 @@ async function load_page(url,id,i_count,wait_time){
               stream.write('[Visiting Page ended @ '+new Date(Date.now()).toLocaleString()+' ]')
               stream.write('\n')
               stream.write('\n')
-              //await browser.close();
               console.log('visit ended')    
               clearInterval(trigger);      
               await process_ended(id)
@@ -250,7 +245,7 @@ async function load_page(url,id,i_count,wait_time){
                          
                     })                
                     //
-                    /* Capture all Requests made byy  Service Worker Scripts */
+                    /* Capture all Requests made by  Service Worker Scripts */
                     sw.on('request',  async req => {
                       stream.write('\t***')              
                       stream.write('\n')
@@ -340,5 +335,4 @@ if (process.argv[2]) {
   var i_count = process.argv[4];
   var timeout = process.argv[5]; 
   crawl_url(url,site_id,i_count,timeout)
-  
 }
