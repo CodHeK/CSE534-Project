@@ -13,7 +13,6 @@ vols = {
 	}	
 }
 
-permission_collection_script   = 'capture_permission_requests.js'
 notification_collection_script = 'capture_notifications.js'
 
 CRAWL_MAX_CONTAINERS = 3

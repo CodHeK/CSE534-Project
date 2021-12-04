@@ -138,14 +138,18 @@ def check_if_success(id,count):
 def test():
     id = str(time.time()) + '_chromium'
     url = 'https://www.indiatoday.in/'
+    
     remove_containers()
-    initiate_container(url, id, 'capture_notifications.js', '0', 180)    
+    initiate_container(url, id, notification_collection_script, '0', 180)    
+
     count = 1
     while count < 3:
         stop_container(id)
         export_container(id, str(count-1))
+
         time.sleep(60)
-        resume_container(url, id,'capture_notifications.js', count, 180)
+        
+        resume_container(url, id, notification_collection_script, count, 180)
         count += 1
     
     logging.info(check_if_success(id, '0'))
