@@ -1,0 +1,21 @@
+root -   initiate_container() - [2021-12-02 23:45:54] container_1638506754.37936_vada_pav creating!!
+root -   initiate_container() - [2021-12-02 23:45:54] container_1638506754.37936_vada_pav created successfully!!
+root -       execute_script() - [2021-12-02 23:46:04] container_1638506754.37936_vada_pav: Executing javascript
+root -       execute_script() - Exception 
+root -       execute_script() - can only concatenate str (not "bytes") to str
+root -       stop_container() - [2021-12-02 23:49:54] container_1638506754.37936_vada_pav stopping!!
+root -     export_container() - [2021-12-02 23:49:57] container_1638506754.37936_vada_pav_0 exporting files!!
+root -     check_if_success() - [2021-12-02 23:49:58] container_1638506754.37936_vada_pav checking status!!
+root -     resume_container() - [2021-12-02 23:54:58] container_1638506754.37936_vada_pav_1 resuming!!
+root -       execute_script() - [2021-12-02 23:55:09] container_1638506754.37936_vada_pav: Executing javascript
+root -       execute_script() - Exception 
+root -       execute_script() - can only concatenate str (not "bytes") to str
+root -       stop_container() - [2021-12-02 23:58:59] container_1638506754.37936_vada_pav stopping!!
+root -     export_container() - [2021-12-02 23:59:01] container_1638506754.37936_vada_pav_1 exporting files!!
+root -     check_if_success() - [2021-12-02 23:59:01] container_1638506754.37936_vada_pav checking status!!
+root -     resume_container() - [2021-12-03 00:04:01] container_1638506754.37936_vada_pav_2 resuming!!
+root -       execute_script() - [2021-12-03 00:04:12] container_1638506754.37936_vada_pav: Executing javascript
+root -       execute_script() - Exception 
+root -       execute_script() - can only concatenate str (not "bytes") to str
+root -     check_if_success() - [2021-12-03 00:08:02] container_1638506754.37936_vada_pav checking status!!
+root -                 test() - True

@@ -1,0 +1,8 @@
+root -   initiate_container() - [2021-12-03 21:42:41] container_1638585761.402142_chromium creating!!
+root -   initiate_container() - [2021-12-03 21:42:41] container_1638585761.402142_chromium created successfully!!
+root -       execute_script() - [2021-12-03 21:42:51] container_1638585761.402142_chromium: Executing javascript
+root -       execute_script() - Exception 
+root -       execute_script() - can only concatenate str (not "bytes") to str
+root -       execute_script() - None
+root -       stop_container() - [2021-12-03 21:44:11] container_1638585761.402142_chromium stopping!!
+root -     export_container() - [2021-12-03 21:44:14] container_1638585761.402142_chromium_0 exporting files!!
