@@ -1,0 +1,28 @@
+.notif-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.img-container {
+    width: 40%;
+}
+
+.text-container {
+    width: 60%;
+    text-align:left;
+}
+
+.text-container h4 {
+    color: black;
+    font-size: 15px;
+}
+
+.text-container p {
+    color: black;
+    font-size: 12px;
+}
+
+/* .notif-body {
+    width: 450px;
+} */
