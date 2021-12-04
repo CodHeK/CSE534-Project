@@ -30,9 +30,7 @@ def initiate_container(url, id, script_name, iteration_count,  container_timeout
         container.start()
         logging.info(get_time() + 'container_'+id+' created successfully!!')    
         
-        ## wait for display to be activated ##
         time.sleep(10)
-        ## Exeecute the browser automation script
         execute_script(url, id, script_name,  iteration_count, container_timeout-100)
     except Exception as e:
         logging.info(e) 
@@ -43,7 +41,7 @@ def execute_script(url, id, script_name,  iteration_count, container_timeout):
         ## Execute javascript file
         logging.info(get_time() +'container_'+id+': Executing javascript')
         container = client.containers.get('container_'+str(id))
-        
+
         _,logs = container.exec_run(cmd=['node',script_name,url,id,str(iteration_count),str(container_timeout)], user=docker_user, detach=False, stream=True)
         time.sleep(container_timeout)        
 
@@ -90,13 +88,6 @@ def resume_container(url, id, script_name, iteration_count, container_timeout):
         execute_script('about:blank', id, script_name, iteration_count, container_timeout-100)
 
 
-def export(container, tar_path, archive_path):
-    with open(tar_path, 'wb') as f:
-        bits, stat = container.get_archive(archive_path)
-        for chunk in bits:
-            f.write(chunk)
-
-
 def export_container(id, count):
     container = client.containers.get('container_' + str(id))
     logging.info(get_time() + 'container_'+id+'_'+str(count)+' exporting files!!')
@@ -109,12 +100,27 @@ def export_container(id, count):
 
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
-    
-    export(container, dir_path+'screenshots.tar', '/home/pptruser/screenshots/')
-    export(container, dir_path+'logs.tar', '/home/pptruser/logs/')
-    export(container, dir_path+'resources.tar', '/home/pptruser/resources/')
-    export(container, dir_path+'dowanloads.tar', '/home/pptruser/Downloads/')
-    export(container, dir_path+'chrome_log.tar', '/home/pptruser/chromium/chrome_debug.log')
+
+    with open(dir_path+'screenshots.tar', 'wb') as f:
+        bits, stat = container.get_archive('/home/pptruser/screenshots/')
+        for chunk in bits:
+            f.write(chunk)
+    with open(dir_path+'logs.tar', 'wb') as f:
+        bits, stat = container.get_archive('/home/pptruser/logs/')
+        for chunk in bits:
+            f.write(chunk)
+    with open(dir_path+'resources.tar', 'wb') as f:
+        bits, stat = container.get_archive('/home/pptruser/resources/')
+        for chunk in bits:
+            f.write(chunk)
+    with open(dir_path+'dowanloads.tar', 'wb') as f:
+        bits, stat = container.get_archive('/home/pptruser/Downloads/')
+        for chunk in bits:
+            f.write(chunk)
+    with open(dir_path+'chrome_log.tar', 'wb') as f:
+        bits, stat = container.get_archive('/home/pptruser/chromium/chrome_debug.log')
+        for chunk in bits:
+            f.write(chunk)
 
     return check_if_success(id,count)
 
@@ -129,6 +135,8 @@ def check_if_success(id,count):
     if log_name in t.getnames():
         f = t.extractfile(log_name)
         data = f.read()
+        print("LOG DATA: \n")
+        print(data)
         res = data.find('Service Worker Registered')
     if res >= 0:
         return True
@@ -137,7 +145,7 @@ def check_if_success(id,count):
 
 
 def test():
-    id = str(time.time()) + '_chromium'
+    id = str(time.time()) + '_misal_pav'
     url = 'https://www.indiatoday.in/'
     
     remove_containers()

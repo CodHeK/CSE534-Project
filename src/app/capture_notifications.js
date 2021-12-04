@@ -284,8 +284,6 @@ async function load_page(url,id,i_count,wait_time){
               
               })
             }
-            /* Don't close the page. Causes problem when resuming */
-            //await page.close()
           })
         }, wait_interval);
 
@@ -312,8 +310,6 @@ async function load_page(url,id,i_count,wait_time){
   return true
 };
 
-//const timeoutPromise = (timeout) => new Promise((resolve) => setTimeout(resolve, timeout));
-
 async function process_ended(id){
   console.log('crawl process ended :: '+id) 	
 }
@@ -321,8 +317,7 @@ async function process_ended(id){
 async function crawl_url(url, id, i_count,timeout){
       try{
         console.log('crawling started :: ' +id)
-        await load_page(url,id, i_count,timeout)   
-        //await timeoutPromise(timeout)        
+        await load_page(url,id, i_count,timeout)        
       }
       catch(error){
         console.log(error)        

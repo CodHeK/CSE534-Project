@@ -1,25 +1,3 @@
-root -   initiate_container() - [2021-12-03 23:03:06] container_1638590586.178056_chromium creating!!
-root -   initiate_container() - [2021-12-03 23:03:07] container_1638590586.178056_chromium created successfully!!
-root -       execute_script() - [2021-12-03 23:03:17] container_1638590586.178056_chromium: Executing javascript
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: crawling started :: 1638590586.178056_chromium
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: visiting page
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: 1638590586.178056_chromium :: page load timeout
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: page visited
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: page loaded
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: timeout!!
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: screen captured
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: Content saved!
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: 2021-12-4 04:04:44
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: visit ended
-
-root -       execute_script() - Container_1638590586.178056_chromium LOG :: crawl process ended :: 1638590586.178056_chromium
-
+root -   initiate_container() - [2021-12-03 23:24:45] container_1638591885.255451_misal_pav creating!!
+root -   initiate_container() - [2021-12-03 23:24:45] container_1638591885.255451_misal_pav created successfully!!
+root -       execute_script() - [2021-12-03 23:24:55] container_1638591885.255451_misal_pav: Executing javascript
