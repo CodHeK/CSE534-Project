@@ -145,7 +145,7 @@ def check_if_success(id,count):
 
 
 def test():
-    id = str(time.time()) + '_misal_pav'
+    id = str(time.time()) + '_chromium'
     url = 'https://www.indiatoday.in/'
     
     remove_containers()
