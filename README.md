@@ -5,14 +5,12 @@
 
 ## File structure
 
-**CSE534-Project**
-|   README.md
-|   Chromium/src // instrumented browser code
-|   collector // Data collection module 
-|   sw-adblock  // Dashboard to demo service worker based ad-blocker
-|   requirements.txt
-|   
-└───
+.
+├── Chromium/src            # Instrumented browser code
+├── collector               # Data collection module 
+├── sw-adblock              # Dashboard to demo service worker based ad-blocker
+├── requirements.txt
+└── README.md
 
 
 ## Run the code:
