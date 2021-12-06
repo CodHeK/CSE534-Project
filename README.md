@@ -5,12 +5,12 @@
 
 ## File structure
 
-.
-├── Chromium/src            # Instrumented browser code
-├── collector               # Data collection module 
-├── sw-adblock              # Dashboard to demo service worker based ad-blocker
-├── requirements.txt
-└── README.md
+    .
+    ├── Chromium/src            # Instrumented browser code
+    ├── collector               # Data collection module 
+    ├── sw-adblock              # Dashboard to demo service worker based ad-blocker
+    ├── requirements.txt
+    └── README.md
 
 
 ## Run the code:
